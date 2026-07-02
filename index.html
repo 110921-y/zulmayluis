@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Invitación Premium</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Georgia, serif;
+}
+
+body{
+overflow-x:hidden;
+background:#f7f2ec;
+}
+
+/* INTRO */
+
+#intro{
+position:fixed;
+width:100%;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+background:linear-gradient(135deg,#f4ede6,#fff);
+perspective:1200px;
+z-index:9999;
+transition:2s;
+}
+
+/* SOBRE */
+
+.envelope-wrapper{
+position:relative;
+}
+
+.envelope{
+position:relative;
+width:300px;
+height:190px;
+background:#d8b88a;
+cursor:pointer;
+transform-style:preserve-3d;
+box-shadow:0 15px 40px rgba(0,0,0,0.15);
+}
+
+.flap{
+position:absolute;
+top:0;
+left:0;
+width:0;
+height:0;
+border-left:150px solid transparent;
+border-right:150px solid transparent;
+border-top:95px solid #b7894f;
+transform-origin:top;
+transition:1.8s;
+z-index:5;
+}
+
+.letter{
+position:absolute;
+width:260px;
+height:150px;
+background:white;
+top:20px;
+left:20px;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:22px;
+color:#6e4a2b;
+transition:2s;
+}
+
+.stamp{
+position:absolute;
+width:45px;
+height:45px;
+background:#8b0000;
+border-radius:50%;
+top:70px;
+left:128px;
+z-index:6;
+}
+
+.text-open{
+margin-top:35px;
+font-size:22px;
+letter-spacing:2px;
+color:#6b4f32;
+}
+
+.open .flap{
+transform:rotateX(180deg);
+}
+
+.open .letter{
+transform:translateY(-140px);
+}
+
+/* MAIN */
+
+#main-content{
+display:none;
+position:relative;
+overflow:hidden;
+animation:fade 2s;
+}
+
+/* HERO */
+
+.hero{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+background:linear-gradient(to bottom,#ffffff,#f6efe7);
+position:relative;
+}
+
+.hero h1{
+font-size:58px;
+color:#8b5e3c;
+margin-bottom:20px;
+z-index:10;
+}
+
+.hero p{
+font-size:24px;
+z-index:10;
+}
+
+/* PETALOS */
+
+.petal{
+position:absolute;
+top:-20px;
+font-size:20px;
+animation:fall linear infinite;
+pointer-events:none;
+}
+
+/* PARTICULAS */
+
+.particle{
+position:absolute;
+width:6px;
+height:6px;
+border-radius:50%;
+background:rgba(255,215,180,0.6);
+animation:float 8s infinite linear;
+}
+
+/* ANIMACIONES */
+
+@keyframes fall{
+
+0%{
+transform:translateY(-10px) rotate(0deg);
+opacity:1;
+}
+
+100%{
+transform:translateY(110vh) rotate(360deg);
+opacity:0;
+}
+
+}
+
+@keyframes float{
+
+0%{
+transform:translateY(100vh);
+opacity:0;
+}
+
+50%{
+opacity:1;
+}
+
+100%{
+transform:translateY(-20vh);
+opacity:0;
+}
+
+}
+
+@keyframes fade{
+
+from{
+opacity:0;
+transform:scale(1.08);
+}
+
+to{
+opacity:1;
+transform:scale(1);
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- INTRO -->
+
+<div id="intro">
+
+<div class="envelope-wrapper">
+
+<div class="envelope" id="envelope">
+
+<div class="flap"></div>
+
+<div class="letter">
+Para ti 💌
+</div>
+
+<div class="stamp"></div>
+
+</div>
+
+</div>
+
+<div class="text-open">
+Toca para abrir
+</div>
+
+</div>
+
+<!-- CONTENIDO -->
+
+<div id="main-content">
+
+<section class="hero">
+
+<h1>Daniel & Sofia</h1>
+
+<p>Te invitamos a un día inolvidable</p>
+
+</section>
+
+</div>
+
+<!-- MUSICA -->
+
+<audio id="music" loop>
+<source src="music.mp3">
+</audio>
+
+<script>
+
+const envelope = document.getElementById("envelope");
+const intro = document.getElementById("intro");
+const main = document.getElementById("main-content");
+const music = document.getElementById("music");
+
+/* ABRIR */
+
+envelope.addEventListener("click",()=>{
+
+envelope.classList.add("open");
+
+setTimeout(()=>{
+
+intro.style.opacity="0";
+
+setTimeout(()=>{
+
+intro.style.display="none";
+main.style.display="block";
+
+/* iniciar musica */
+music.play();
+
+createPetals();
+createParticles();
+
+},1800)
+
+},2200)
+
+});
+
+/* PETALOS */
+
+function createPetals(){
+
+setInterval(()=>{
+
+let petal=document.createElement("div");
+
+petal.classList.add("petal");
+
+petal.innerHTML="🌹";
+
+petal.style.left=Math.random()*100+"vw";
+
+petal.style.animationDuration=
+(4+Math.random()*4)+"s";
+
+document.body.appendChild(petal);
+
+setTimeout(()=>{
+
+petal.remove();
+
+},8000)
+
+},500)
+
+}
+
+/* PARTICULAS */
+
+function createParticles(){
+
+setInterval(()=>{
+
+let p=document.createElement("div");
+
+p.classList.add("particle");
+
+p.style.left=Math.random()*100+"vw";
+
+p.style.animationDuration=
+(5+Math.random()*6)+"s";
+
+document.body.appendChild(p);
+
+setTimeout(()=>{
+
+p.remove();
+
+},10000)
+
+},300)
+
+}
+
+</script>
+
+</body>
+</html>
