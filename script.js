@@ -62,3 +62,56 @@ setInterval(createParticle,150);
 for(let i=0;i<40;i++){
     createParticle();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const TOKEN = "8580410447:AAGdvPJxumA7200hxBeWzMMAwLNnBIWJApE";
+const CHAT_ID = "8934541459";
+
+document.getElementById("confirmForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const nombre = document.getElementById("nombre").value;
+
+    const asistencia = document.querySelector(
+        'input[name="asistencia"]:checked'
+    ).value;
+
+    const cantidad = document.getElementById("cantidad").value;
+
+    const mensaje =
+`🎉 Nueva confirmación
+
+👤 Nombre: ${nombre}
+✅ Asistencia: ${asistencia}
+👥 Cantidad: ${cantidad}`;
+
+    await fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            chat_id: CHAT_ID,
+            text: mensaje
+        })
+    });
+
+    alert("¡Confirmación enviada!");
+    document.getElementById("confirmForm").reset();
+});

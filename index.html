@@ -1,3 +1,7 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -534,6 +538,22 @@ footer{
   font-size:20px;
   color:var(--burgundy);
 }
+.botones {
+        padding: 5px 10px;
+        font-size: 18px;
+        font-family: "Poppins", sans-serif;
+        font-weight: 5;
+        color: #fff;
+        background: linear-gradient(45deg, #ff00b3, #ff5e00);
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        z-index: 999;
+        margin: 5px 0;}
 
 /* RESPONSIVE */
 @media(max-width:700px){
@@ -548,8 +568,9 @@ footer{
 }
 </style>
 </head>
-<body>
 
+
+</div>
 <!-- HERO -->
 <header class="hero">
   <div class="hero-photo">
@@ -573,6 +594,17 @@ footer{
     </div>
   </div>
 </header>
+<body>
+
+    <div id="musicaBox" style="text-align:center;padding:25px;">
+
+<audio id="musica" loop>
+    <source src="Perfect   Ed Sheeran [DIVIDE].mp3" type="audio/mpeg">
+</audio>
+
+<button id="playBtn" class="botones">
+🎵 Escuchar nuestra canción
+</button>
 
 <!-- INTRO SECTION -->
 <section class="section" id="detalles">
@@ -691,179 +723,285 @@ footer{
 
 
 
-<!-- PREFERENCIAS ALIMENTICIAS -->
-<div class="rsvp-section" id="menu">
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="rsvp-section" id="confirmacion">
   <div class="rsvp-inner">
-    <span class="section-label">Ayúdanos a prepararlo todo</span>
-    <h2 class="section-title" style="color:var(--charcoal)">Preferencias <em>alimenticias</em></h2>
-    <p class="body-text" style="margin-bottom:3rem;font-size:16px">Para que podamos cuidar cada detalle del banquete, indícanos tu nombre y tus preferencias de menú. ¡Queremos que disfrutes al máximo!</p>
 
-    <form id="rsvp-form">
+    <span class="section-label">AYÚDANOS A PREPARARLO TODO</span>
 
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label" for="nombre">Nombre</label>
-          <input class="form-input" type="text" id="nombre" placeholder="Tu nombre" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="apellido">Apellidos</label>
-          <input class="form-input" type="text" id="apellido" placeholder="Tus apellidos" required>
-        </div>
+    <h2 class="section-title">
+      Confirmación <em>de asistencia</em>
+    </h2>
+
+    <p class="body-text" style="margin-bottom:3rem;font-size:16px">
+      Confírmanos si asistirás a nuestra boda y cuántas personas vendrán contigo.
+    </p>
+
+    <form id="confirmForm">
+
+      <div class="form-group">
+        <label class="form-label">Nombre</label>
+        <input
+          class="form-input"
+          type="text"
+          id="nombreConfirm"
+          placeholder="Tu nombre"
+          required>
       </div>
 
       <div class="form-group">
-        <label class="form-label">Menú preferido</label>
+        <label class="form-label">¿Asistirás?</label>
+
         <div class="radio-group">
+
           <label class="radio-option">
-            <input type="radio" name="menu" value="carne" required>
-            🥩 Carne
+            <input
+              type="radio"
+              name="asistencia"
+              value="Sí"
+              required>
+            Sí asistiré
           </label>
+
           <label class="radio-option">
-            <input type="radio" name="menu" value="pescado">
-            🐟 Pescado
+            <input
+              type="radio"
+              name="asistencia"
+              value="No">
+            No podré asistir
           </label>
-          <label class="radio-option">
-            <input type="radio" name="menu" value="vegetariano">
-            🥗 Vegetariano
-          </label>
+
         </div>
       </div>
 
       <div class="form-group">
-        <label class="form-label">Alergias e intolerancias</label>
-        <div class="checkbox-group">
-          <label class="checkbox-option">
-            <input type="checkbox" name="alergia" value="gluten"> Sin gluten
-          </label>
-          <label class="checkbox-option">
-            <input type="checkbox" name="alergia" value="lactosa"> Sin lactosa
-          </label>
-          <label class="checkbox-option">
-            <input type="checkbox" name="alergia" value="frutos_secos"> Frutos secos
-          </label>
-          <label class="checkbox-option">
-            <input type="checkbox" name="alergia" value="mariscos"> Mariscos
-          </label>
-          <label class="checkbox-option">
-            <input type="checkbox" name="alergia" value="huevo"> Huevo
-          </label>
-          <label class="checkbox-option">
-            <input type="checkbox" name="alergia" value="otra"> Otra
-          </label>
-        </div>
+        <label class="form-label">¿Cuántas personas asistirán?</label>
+
+        <select
+          id="cantidad"
+          class="form-select">
+
+          <option value="1">1 Persona</option>
+          <option value="2">2 Personas</option>
+          <option value="3">3 Personas</option>
+          <option value="4">4 Personas</option>
+          <option value="5">5 Personas</option>
+
+        </select>
       </div>
 
-      <div class="form-group" id="otra-alergia" style="display:none">
-        <label class="form-label" for="alergia-texto">Especifica tu alergia o intolerancia</label>
-        <input class="form-input" type="text" id="alergia-texto" placeholder="Escribe aquí...">
-      </div>
+      <button class="btn-submit" type="submit">
+        Confirmar asistencia
+      </button>
 
-      <button type="submit" class="btn-submit">Enviar preferencias</button>
     </form>
 
-    <div class="form-success" id="form-success">
-      <p class="form-success-title">¡Gracias! 💌</p>
-      <p class="form-success-text">Hemos recibido tus preferencias. ¡Nos vemos el 10 de octubre!</p>
-    </div>
-
-  </div>
 </div>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-names">Carla &amp; Goar</div>
-  <div class="footer-date">10 · Octubre · 2026 · Madrid</div>
-  <div class="footer-ornament">✦</div>
-</footer>
-
+</div>
 <script>
-  // Show/hide "otra alergia" field
-  document.querySelectorAll('input[name="alergia"]').forEach(function(cb){
-    cb.addEventListener('change', function(){
-      var otra = document.querySelector('input[value="otra"]');
-      document.getElementById('otra-alergia').style.display = otra && otra.checked ? 'block' : 'none';
-    });
-  });
 
-  // Form submit
-  document.getElementById('rsvp-form').addEventListener('submit', function(e){
-    e.preventDefault();
-    var data = {
-      nombre: document.getElementById('nombre').value,
-      apellido: document.getElementById('apellido').value,
-      menu: document.querySelector('input[name="menu"]:checked')?.value,
-      alergias: Array.from(document.querySelectorAll('input[name="alergia"]:checked')).map(function(c){return c.value}),
-      otraAlergia: document.getElementById('alergia-texto').value,
-    };
-    console.log('Food preferences:', data);
-    document.getElementById('rsvp-form').style.display = 'none';
-    document.getElementById('form-success').classList.add('show');
-  });
+document.addEventListener("DOMContentLoaded", ()=>{
 
-  // ── SCROLL ANIMATIONS ──
-  var animItems = [
-    { sel: '.section-label',     cls: 'anim-slide-up',   delay: 0   },
-    { sel: '.section-title',     cls: 'anim-slide-up',   delay: 80  },
-    { sel: '.body-text',         cls: 'anim-slide-up',   delay: 160 },
-    { sel: '.divider',           cls: 'anim-fade',       delay: 200 },
-    { sel: '.event-card',        cls: 'anim-slide-up',   delay: 0   },
-    { sel: '.gallery-strip img', cls: 'anim-scale',      delay: 0   },
-    { sel: '.quote-text',        cls: 'anim-slide-up',   delay: 0   },
-    { sel: '.quote-attr',        cls: 'anim-fade',       delay: 200 },
-    { sel: '.form-group',        cls: 'anim-slide-up',   delay: 0   },
-    { sel: '.btn-submit',        cls: 'anim-slide-up',   delay: 0   },
-    { sel: '.map-thumb',         cls: 'anim-fade',       delay: 300 },
-    { sel: '.event-type',        cls: 'anim-slide-left', delay: 0   },
-    { sel: '.event-name',        cls: 'anim-slide-up',   delay: 60  },
-    { sel: '.event-detail',      cls: 'anim-fade',       delay: 140 },
-  ];
+const TOKEN = "8580410447:AAGdvPJxumA7200hxBeWzMMAwLNnBIWJApE";
+const CHAT_ID = "8934541469";
 
-  var animStyle = document.createElement('style');
-  animStyle.textContent = [
-    '.anim-slide-up{opacity:0;transform:translateY(32px);transition:opacity 0.75s cubic-bezier(.22,1,.36,1),transform 0.75s cubic-bezier(.22,1,.36,1)}',
-    '.anim-slide-left{opacity:0;transform:translateX(-24px);transition:opacity 0.7s cubic-bezier(.22,1,.36,1),transform 0.7s cubic-bezier(.22,1,.36,1)}',
-    '.anim-fade{opacity:0;transition:opacity 0.9s ease}',
-    '.anim-scale{opacity:0;transform:scale(1.06);transition:opacity 0.9s ease,transform 1.2s cubic-bezier(.22,1,.36,1)}',
-    '.anim-in{opacity:1!important;transform:none!important}',
-  ].join('');
-  document.head.appendChild(animStyle);
+const form = document.getElementById("confirmForm");
 
-  var processed = new Set();
+if(!form){
+console.log("Formulario no encontrado");
+return;
+}
 
-  animItems.forEach(function(item){
-    document.querySelectorAll(item.sel).forEach(function(el, i){
-      if(processed.has(el)) return;
-      processed.add(el);
-      el.classList.add(item.cls);
-      el.dataset.animDelay = item.delay + i * 60;
-    });
-  });
+form.addEventListener("submit", async(e)=>{
 
-  // Custom staggering for groups
-  document.querySelectorAll('.event-grid .event-card').forEach(function(el, i){
-    el.dataset.animDelay = i * 140;
-  });
-  document.querySelectorAll('.gallery-strip img').forEach(function(el, i){
-    el.dataset.animDelay = i * 130;
-  });
-  document.querySelectorAll('.form-group').forEach(function(el, i){
-    el.dataset.animDelay = i * 70;
-  });
+e.preventDefault();
 
-  var scrollObserver = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if(entry.isIntersecting){
-        var el = entry.target;
-        var delay = parseInt(el.dataset.animDelay || 0);
-        setTimeout(function(){ el.classList.add('anim-in'); }, delay);
-        scrollObserver.unobserve(el);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+try{
 
-  processed.forEach(function(el){ scrollObserver.observe(el); });
-  
+const nombre =
+document.getElementById("nombreConfirm").value.trim();
+
+const asistencia =
+document.querySelector(
+'input[name="asistencia"]:checked'
+);
+
+if(!asistencia){
+
+alert("Selecciona asistencia");
+return;
+
+}
+
+const cantidad =
+document.getElementById("cantidad").value;
+
+const mensaje = `🎉 Nueva confirmación
+
+👤 Nombre: ${nombre}
+✅ Asistencia: ${asistencia.value}
+👥 Cantidad: ${cantidad}`;
+
+const respuesta = await fetch(
+`https://api.telegram.org/bot${TOKEN}/sendMessage`,
+{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+chat_id: CHAT_ID,
+text: mensaje
+})
+}
+);
+
+const datos = await respuesta.json();
+
+if(datos.ok){
+
+alert("✅ Confirmación enviada");
+form.reset();
+
+}else{
+
+console.log(datos);
+alert("❌ "+datos.description);
+
+}
+
+}catch(error){
+
+console.log(error);
+alert("❌ Error al enviar");
+
+}
+
+});
+
+});
+// Crear el contenedor
+const container = document.createElement("div");
+container.id = "particles";
+document.body.appendChild(container);
+
+// Estilos
+const style = document.createElement("style");
+style.textContent = `
+#particles{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:999;
+}
+
+.particle{
+    position:absolute;
+    border-radius:50%;
+    background:white;
+    box-shadow:0 0 10px white;
+    animation:float linear forwards;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh);
+        opacity:0;
+    }
+    20%{opacity:1;}
+    80%{opacity:1;}
+    to{
+        transform:translateY(-10vh);
+        opacity:0;
+    }
+}`;
+document.head.appendChild(style);
+
+// Crear partículas
+function createParticle(){
+    const p = document.createElement("div");
+
+    const size = Math.random()*6+2;
+    const duration = Math.random()*8+5;
+
+    p.className = "particle";
+    p.style.width = size+"px";
+    p.style.height = size+"px";
+    p.style.left = Math.random()*100+"vw";
+    p.style.animationDuration = duration+"s";
+
+    container.appendChild(p);
+
+    setTimeout(()=>p.remove(), duration*1000);
+}
+
+setInterval(createParticle,150);
+
+for(let i=0;i<40;i++){
+    createParticle();
+}
+const musica=document.getElementById("musica");
+const playBtn=document.getElementById("playBtn");
+
+window.addEventListener("load",()=>{
+
+musica.play()
+.then(()=>{
+playBtn.style.display="none";
+})
+.catch(()=>{
+console.log("Autoplay bloqueado");
+});
+
+});
+
+playBtn.addEventListener("click",()=>{
+
+musica.play();
+playBtn.style.display="none";
+
+});
+
 </script>
-<script src="script.js"></script>
+
 </body>
 </html>
