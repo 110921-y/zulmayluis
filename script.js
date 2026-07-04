@@ -20,7 +20,7 @@ style.textContent = `
 .particle{
     position:absolute;
     border-radius:50%;
-    background:#00aaff;
+    background:white;
     box-shadow:0 0 10px white;
     animation:float linear forwards;
 }
