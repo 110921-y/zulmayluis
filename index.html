@@ -13,19 +13,19 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --black:#e9321a;
-  --charcoal:#1a1816;
-  --warm-gray:#3a3634;
-  --mid-gray:#7a7572;
+  --black:#006aff;
+  --charcoal:#252424;
+  --warm-gray:#000000;
+  --mid-gray:#000000;
   --light-gray:#c8c4bf;
-  --ivory:#f5f0e8;
-  --cream:#faf7f2;
-  --burgundy:#6b2737;
+  --ivory:#ffe5e5;
+  --cream:#4589e7;
+  --burgundy:#f58ba4;
   --burgundy-light:#8a3347;
   --forest:#2a3d2a;
   --gold:#b8956a;
   --gold-light:#d4b08a;
-  --rust:#7a3d2a;
+  --rust:#2b5ca0;
 }
 html{scroll-behavior:smooth}
 body{
@@ -602,7 +602,7 @@ footer{
     <source src="Perfect   Ed Sheeran [DIVIDE].mp3" type="audio/mpeg">
 </audio>
 
-<button id="playBtn" class="botones">
+<button id="playBtn" class="btn-submit">
 🎵 Escuchar nuestra canción
 </button>
 
@@ -834,6 +834,27 @@ footer{
 </div>
 </div>
 <script>
+    let velocidad = 0.4; // menor = más lento
+
+function bajarSolo(){
+
+window.scrollBy(0, velocidad);
+
+if(
+window.innerHeight + window.scrollY
+>= document.body.scrollHeight
+){
+
+clearInterval(autoScroll);
+
+}
+
+}
+
+const autoScroll = setInterval(
+bajarSolo,
+25
+);
 
 document.addEventListener("DOMContentLoaded", ()=>{
 
